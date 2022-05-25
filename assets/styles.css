@@ -4,3 +4,7 @@
   margin-bottom: 4rem;
   font-size: 1rem;
 }
+.forecast {
+  display: flex;
+  flex-direction: row;
+}

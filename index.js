@@ -69,8 +69,11 @@ const renderWeatherData = () => {
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
+     
+
 
 `)
+
 
 
       
@@ -79,6 +82,33 @@ const renderWeatherData = () => {
     
     
 };
+const renderWeatherForecast = () => {
+  for (i = 0; i < 5; i++)
+  {
+    $("#forecast").append(
+      `<div><h1>5 Day forecast</h1></div>
+
+        
+    <div>
+     
+      <h2>Title</h2>
+      <div class=" d-flex justify-content-between flex-wrap">
+        
+        
+        
+        <div class="card" style="width: 12rem">
+          <img src="" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up
+              the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>`)
+  }
+}
 
 
   // get the lat and lon from current weather data API response
@@ -95,6 +125,8 @@ const handleFormSubmit = (event) => {
     console.log(search);
     //validate
   renderWeatherData()
+  renderWeatherForecast()
+
     if (search) {
       // build object with full name and results
       console.log("good search");
