@@ -17,17 +17,20 @@
 
   <body>
     <!-- header -->
+    
     <header class="header">
       <nav class="navbar"style="background-color: #e3f2fd;>
-        <div class="container-fluid">
-           <form class=" input-container d-flex" role="search">
+        <div class= "container-fluid">
+           <form  id="form" class=" input-container d-flex" role="search">
             <input
+            id="input-text"
               class="form-control me-2"
-              type="search"
+              type="text"
               placeholder="Search"
               aria-label="Search"
+              
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button id="submit" class="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
@@ -39,132 +42,21 @@
       </nav>
     </header>
 
-    <main class=" section4 main-partrow border">
+    <main >
+        <section id="all-container" class=" section4 main-partrow border">
+
+        </section>
       <!-- Form and recent history section -->
-      <h2>CURRENT LOCATION</h2>
-      <section class="current-weather-section">
-        <div class="main-weather-card">
-            
-          <div class="information">
-              <div>
-            <h3>current weather</h3>
-            <h4>12:10</h4>
-        </div>
-            
-          </div>
-          
-          <div class="information1">
-              <div class ="info1">
-            <h4>icon</h4>
-            <h3>16c</h3>
-        </div>
-        
-            <div class="info1">
-            <h3>mostly cloudy</h3>
-            <h4>feels like : 16c</h4>
-        </div>
-          </div>
-          <div class="information">
-            <div class="info-items">
-              <h3>wind</h3>
-              <h3>12mph</h3>
-            </div>
-            <div class="information">
-                <div class="info-items">
-                  <h3>humidity</h3>
-                  <h3>22%</h3>
-                </div>
-                <div class="information">
-                    <div class="info-items">
-                      <h3>visibility</h3>
-                      <h3>6mi</h3>
-                    </div>o
-                    <div class="information">
-                        <div class="info-items">
-                          <h3>pressure</h2>
-                          <h3>1017mb</h2>
-                        </div>
-                        <div class="information">
-                            <div class="info-items">
-                              <h3>dew point</h3>
-                              <h3>12c</h3>
-                            </div>
-
-           
-        </div>
-      </section>
-
+     
+      
+    
       <!-- current and future data section -->
-      <section class=" forecast col-sm-12 col-md-9 border">
+      <section id="forecast" class=" forecast col-sm-12 col-md-9 border">
         <!-- current weather data -->
-        
+        <h3>5 Day Forecast</h3>
 
         <!-- forecast weather data -->
-        <div>
-          <!-- title -->
-          <h3>5 Day Forecast</h3>
-          <div class="d-flex justify-content-between flex-wrap">
-            <!-- forecast weather card 1 -->
-            <div class="card" style="width: 12rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to
-                </p>
-                
-              </div>
-            </div>
 
-            <!-- forecast weather card 2 -->
-            <div class="card" style="width: 12rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to
-                </p>
-                
-              </div>
-            </div>
-
-            <!-- forecast weather card 3 -->
-            <div class="card" style="width: 12rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to 
-                </p>
-               
-              </div>
-            </div>
-
-            <!-- forecast weather card 4 -->
-            <div class="card" style="width: 12rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to 
-                </p>
-                
-              </div>
-            </div>
-
-            <!-- forecast weather card 5 -->
-            <div class="card" style="width: 12rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to 
-                </p>
-                
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
     </main>
 
@@ -185,6 +77,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="./assets/js/index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

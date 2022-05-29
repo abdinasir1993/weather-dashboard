@@ -20,10 +20,11 @@ const API_KEY = "d92eced4f070a72612c2186a9ea527d8";
 const renderWeatherData = () => {
   // use API to fetch current weather data
   let search = document.getElementById("input-text").value;
-  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}`;
+  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`;
   console.log(currentWeatherUrl)
   
   let items = [];
+  
 
   fetch(currentWeatherUrl)
     .then(function (res) {
@@ -46,33 +47,91 @@ const renderWeatherData = () => {
       console.log (humidity)
 
       let windSpeed = items.wind.speed;
-      console.log(windSpeed)
+    
+      
+      let icon = items.weather[0].icon
+      console.log(icon)
 
-      $("#card-box").append(`<div><h1>Current Weather Data</h1> </div>
+      let visibility = items.visibility
 
-        
-      <div>
+      let pressure = items.main.pressure
+
+      let clouds = items.clouds.all
+
+      let cloudiness = ""
        
-        <h2>Location:${cityName} </h2>
-        <div class=" d-flex justify-content-between flex-wrap">
-          
-          <div class="card" style="width: 12rem">
-            <img src="" class="card-img-top" alt="" />
-            <div class="card-body">
-              
-              <h5 class="card-title">Temperature:${temperature} </h5>
-              <h5 class="card-title">Humidity:${humidity} </h5>
-              <h5 class="card-title">Windspeed:${windSpeed} </h5>
-              <p class="card-text">
-             
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+      if (clouds < 20 )  {
+       cloudiness = "clear sky"
+
+      } else if (clouds > 20 && clouds < 40 ) {
+        cloudiness = "light cloud"
+
+      } else if (clouds >41 && clouds < 60 ) {
+        cloudiness = "cloudy"
+
+      } else   {
+        cloudiness = "mostly cloudy"
+
+      }
+      console.log (cloudiness)
+
+
+
+      
+
+      
+
+      let feelslike = items.main.feels_like
+
+      $("#all-container").append(` <h2> ${cityName} </h2>
+      <section class="current-weather-section">
+        <div class="main-weather-card">
+            
+          <div class="information">
+              <div>
+            <h3>${temperature}℃ </h3>
+            <h4> </h4>
+        </div>
+            
           </div>
-     
+          
+          <div class="information1">
+              <div class ="info1">
+              <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="">
+            <h3>${temperature}℃</h3>
+        </div>
+        
+            <div class="info1">
+            <h3>${cloudiness} </h3>
+            <h4>feels like : ${feelslike}℃ </h4>
+        </div>
+          </div>
+          <div class="information">
+            <div class="info-items">
+              <h3>wind</h3>
+              <h3>${windSpeed} mph </h3>
+            </div>
+            <div class="information">
+                <div class="info-items">
+                  <h3>humidity</h3>
+                  <h3>${humidity} </h3>
+                </div>
+            
+                    <div class="information">
+                        <div class="info-items">
+                          <h3>pressure</h2>
+                          <h3>${pressure}hPA </h2>
+                        </div>
+                        <div class="information">
+                            <div class="info-items">
+                              <h3>dew point</h3>
+                              <h3>12c</h3>
+                            </div>
 
-
-`)
+           
+        </div>
+      </section>
+      `)
 
 
 
@@ -86,25 +145,19 @@ const renderWeatherForecast = () => {
   for (i = 0; i < 5; i++)
   {
     $("#forecast").append(
-      `<div><h1>5 Day forecast</h1></div>
-
-        
-    <div>
-     
-      <h2>Title</h2>
-      <div class=" d-flex justify-content-between flex-wrap">
-        
-        
-        
+      ` <div>
+      <!-- title -->
+      
+      <div class="d-flex justify-content-between flex-wrap">
+        <!-- forecast weather card 1 -->
         <div class="card" style="width: 12rem">
-          <img src="" class="card-img-top" alt="..." />
+          <img src="..." class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">
-              Some quick example text to build on the card title and make up
-              the bulk of the card's content.
+              Some quick example text to
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            
           </div>
         </div>`)
   }
@@ -141,6 +194,7 @@ const onReady = () => {
   // render recent cities
   console.log('ready')
 };
-form.addEventListener("submit", handleFormSubmit);
+const form1 = document.getElementById("form")
+form1.addEventListener("submit",handleFormSubmit);
 
 $(document).ready(onReady);
