@@ -14,6 +14,56 @@ const API_KEY = "d92eced4f070a72612c2186a9ea527d8";
 // const renderForecastWeather = (forecastWeatherData) => {
 //   // render the forecast weather data and append each card to section
 // };
+const renderWeatherForecast = (lat, lon) => {
+  const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`
+  console.log(forecastWeatherUrl)
+  let items = [];
+  
+
+  fetch(forecastWeatherUrl)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (result) {
+      items = result;
+      console.log(items)
+    
+  for (i = 0; i < 5; i++){
+
+    let temp = items.daily[i].temp.day
+    console.log (temp)
+    let nightTemp = items.daily[i].temp.night
+    console.log (nightTemp)
+    let icon = items.daily[i].weather[0].icon
+    console.log (icon)
+    let date = items.daily[i].dt
+    console.log (date)
+    let description = items.daily[i].weather[0].description
+    
+    $("#forecast").append(
+      ` <div>
+      <!-- title -->
+      
+      <div class="d-flex justify-content-between flex-wrap">
+        <!-- forecast weather card 1 -->
+
+    
+        <div class="card" style="width: 12rem">
+        <h5 class="card-title">${date}</h5>
+          <img src="http://openweathermap.org/img/wn/${icon}@2x.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+          <h5 class="card-title">${temp}℃</h5>
+            <p class="card-text">
+            ${description}
+            </p>
+            
+          </div>
+        </div>`)
+      }
+      })
+ 
+}
+
 
 
 
@@ -56,24 +106,37 @@ const renderWeatherData = () => {
 
       let pressure = items.main.pressure
 
-      let clouds = items.clouds.all
+      let clouds = items.weather[0].description
 
       let cloudiness = ""
+
+      
        
-      if (clouds < 20 )  {
-       cloudiness = "clear sky"
+      // if (clouds < 20 )  {
+      //  cloudiness = "clear sky"
 
-      } else if (clouds > 20 && clouds < 40 ) {
-        cloudiness = "light cloud"
+      // } else if (clouds > 20 && clouds < 40 ) {
+      //   cloudiness = "light cloud"
 
-      } else if (clouds >41 && clouds < 60 ) {
-        cloudiness = "cloudy"
+      // } else if (clouds >41 && clouds < 60 ) {
+      //   cloudiness = "cloudy"
 
-      } else   {
-        cloudiness = "mostly cloudy"
+      // } else   {
+      //   cloudiness = "mostly cloudy"
 
-      }
+      // }
       console.log (cloudiness)
+
+      // if (icon = 01d.png ) 
+      const main = document.getElementById("main")
+      main.setAttribute('class', `a${icon}`)
+
+  
+      const renderDate = () => {
+        return moment().format("ddd, MMMM, YYYY HH:mm");
+      };
+      $("#currentDay").text(renderDate);
+      
 
 
 
@@ -83,14 +146,14 @@ const renderWeatherData = () => {
 
       let feelslike = items.main.feels_like
 
-      $("#all-container").append(` <h2> ${cityName} </h2>
+      $("#all-container").append(` <h2> </h2>
       <section class="current-weather-section">
         <div class="main-weather-card">
             
           <div class="information">
               <div>
-            <h3>${temperature}℃ </h3>
-            <h4> </h4>
+            <h3>${cityName} </h3>
+            <h4 id="currentDay"> </h4>
         </div>
             
           </div>
@@ -102,7 +165,7 @@ const renderWeatherData = () => {
         </div>
         
             <div class="info1">
-            <h3>${cloudiness} </h3>
+            <h3>${clouds} </h3>
             <h4>feels like : ${feelslike}℃ </h4>
         </div>
           </div>
@@ -133,39 +196,23 @@ const renderWeatherData = () => {
       </section>
       `)
 
+      let lat = items.coord.lat
+      let lon = items.coord.lon
+      renderWeatherForecast(lat, lon) 
 
 
-      
+
+     
         
     })
     
     
 };
-const renderWeatherForecast = () => {
-  for (i = 0; i < 5; i++)
-  {
-    $("#forecast").append(
-      ` <div>
-      <!-- title -->
-      
-      <div class="d-flex justify-content-between flex-wrap">
-        <!-- forecast weather card 1 -->
-        <div class="card" style="width: 12rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to
-            </p>
-            
-          </div>
-        </div>`)
-  }
-}
+
 
 
   // get the lat and lon from current weather data API response
-//   const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
+  // const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
 
   // render current weather data
 
@@ -178,7 +225,7 @@ const handleFormSubmit = (event) => {
     console.log(search);
     //validate
   renderWeatherData()
-  renderWeatherForecast()
+  
 
     if (search) {
       // build object with full name and results
