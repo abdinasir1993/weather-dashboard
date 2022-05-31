@@ -157,7 +157,7 @@ const renderWeatherData = () => {
           <div class="information">
               <div>
             <h2>${cityName} </h2>
-            <h4>${date} </h4>
+            <h3>${date} </h3>
         </div>
             
           </div>
