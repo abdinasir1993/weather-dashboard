@@ -32,12 +32,12 @@ const renderWeatherForecast = (lat, lon) => {
 
     let temp = items.daily[i].temp.day
     console.log (temp)
-    let nightTemp = items.daily[i].temp.night
-    console.log (nightTemp)
+    
     let icon = items.daily[i].weather[0].icon
     console.log (icon)
-    let date = items.daily[i].dt
-    console.log (date)
+    let tempDate = items.daily[i].dt
+    let date = moment.unix(tempDate).format('DD-MM-YYYY');
+    console.log(date)
     let description = items.daily[i].weather[0].description
     
     $("#forecast").append(
@@ -86,7 +86,9 @@ const renderWeatherData = () => {
     
       let cityName = items.name;
       console.log (cityName)
-      let date =  items.dt;
+      
+     let  tempDate = items.dt;
+     let  date = moment.unix(tempDate).format('DD-MM-YYYY');
       console.log(date)
       
       let temperature = items.main.temp;
@@ -109,6 +111,8 @@ const renderWeatherData = () => {
       let clouds = items.weather[0].description
 
       let cloudiness = ""
+      
+      
 
       
        
@@ -152,8 +156,8 @@ const renderWeatherData = () => {
             
           <div class="information">
               <div>
-            <h3>${cityName} </h3>
-            <h4 id="currentDay"> </h4>
+            <h2>${cityName} </h2>
+            <h4>${date} </h4>
         </div>
             
           </div>
@@ -199,6 +203,7 @@ const renderWeatherData = () => {
       let lat = items.coord.lat
       let lon = items.coord.lon
       renderWeatherForecast(lat, lon) 
+      $("#submit").click(refreshButtonClick)
 
 
 
@@ -211,6 +216,7 @@ const renderWeatherData = () => {
 
 
 
+
   // get the lat and lon from current weather data API response
   // const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
 
@@ -218,6 +224,32 @@ const renderWeatherData = () => {
 
   // render forecast weather dat
 const handleFormSubmit = (event) => {
+
+  const container = document.getElementById("container")
+  const main = document.getElementById("main")
+  
+  container.remove()
+
+ 
+
+  $("#main").append(` <section id="container">
+  <section id="all-container" class=" section4 main-partrow border">
+
+ </section>
+<!-- Form and recent history section -->
+
+
+
+<!-- current and future data section -->
+<section id="forecast" class=" forecast col-sm-12 col-md-9 border">
+ <!-- current weather data -->
+ <h3>5 Day Forecast</h3>
+
+ <!-- forecast weather data -->
+
+</section>
+</section>
+</section>`)
     
     event.preventDefault();
     //get text input
