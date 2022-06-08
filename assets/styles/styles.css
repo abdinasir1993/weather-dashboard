@@ -4,30 +4,33 @@ body {
   color: white;
 }
 
+/* background for different weather types */
+
 .a01d {
-  background-image: url(./images/clear.jpg);
+  background-image: url(../images/clear.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .a02d {
-  background-image: url(https://thumbs.gfycat.com/FancyFoolhardyKestrel-max-1mb.gif);
+  background-image: url(https://i.gifer.com/XFbw.gif);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .a03d {
-  background-image: url(https://thumbs.gfycat.com/FancyFoolhardyKestrel-max-1mb.gif);
+  background-image: url(https://i.gifer.com/XFbw.gif);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .a04d {
-  background-image: url(./images/cloudy.jpg);
+  background-image: url(https://i.gifer.com/XFbw.gif);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .a10d {
-  background-image: url(https://www.icegif.com/wp-content/uploads/2021/11/icegif-695.gif);
+  background-image: url(https://c.tenor.com/D8N2aMZtd4YAAAAC/rain.gif);
   background-repeat: no-repeat;
   background-size: cover;
+  image-resolution: 300dpi;
 }
 .a09d {
   background-image: url(https://www.icegif.com/wp-content/uploads/2021/11/icegif-695.gif);
@@ -62,24 +65,17 @@ body {
   background-size: cover;
 }
 
-.main-part {
-  margin-top: rem;
+/* styling for search page background */
+.season-container {
+  background-image: url(../images/seasons.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width: 100vw;
+  margin-top: 100px;
+  align-items: center;
 }
-.information {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.info-items {
-  margin-left: 100px;
-  display: flex;
-  flex-direction: column;
-}
-
-.info-boxes {
-  flex-direction: row;
-}
+/* styling for todays weather */
 .current-weather-section {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRphCdyD35er1BjFVH2Np7YfJMqgSotdZxoIA&usqp=CAU);
   background-repeat: no-repeat;
@@ -91,12 +87,32 @@ body {
   border-radius: 0.7;
   margin-left: 10rem;
 }
+/* weather information styling */
+
+.information {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .information1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 15px;
 }
+
+.info-items {
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-boxes {
+  flex-direction: row;
+}
+
+/* styling for 5 day forecast */
+
 .forecast {
   display: flex;
   flex-direction: row;

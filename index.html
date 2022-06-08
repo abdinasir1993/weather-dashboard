@@ -12,14 +12,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/styles/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
 
   <body id="main">
-    <!-- header -->
-    <img src="" alt="">
+    
+    <!-- header and banner -->
     
     <header class="header">
       <nav class="navbar dark bg-dark"style=>
@@ -39,27 +39,30 @@
           </form>
           <a id="currentDay" class="navbar-brand"></a>
           
-          <h1>Weatherdashboard</h1>
+          <h1><a href="./index.html">Weather Dashboard</a></h1>
 
         </div>
       </nav>
     </header>
 
-    <main id="main" >
-      <section id="container">
-         <section id="all-container" class=" section4 main-partrow border">
+    <!-- main section -->
+
+    <main id="main-container" >
+
+      <!-- load page background -->
+      <section class="season-container" id="container">
+
+        <!-- Todays weather appended here -->
+         <section id="all-container" >
 
         </section>
-      <!-- Form and recent history section -->
+   
      
-      
+      <!-- forecast gets appended here -->
     
-      <!-- current and future data section -->
-      <section id="forecast" class=" forecast col-sm-12 col-md-9 border">
-        <!-- current weather data -->
-        <h3>5 Day Forecast</h3>
-
-        <!-- forecast weather data -->
+      <section id="forecast" >
+        
+      
 
       </section>
     </section>
@@ -84,6 +87,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="./index.js"></script>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>
