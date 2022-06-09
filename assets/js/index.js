@@ -102,8 +102,6 @@ const renderCurrentWeather = (search) => {
       let pressure = items.main.pressure
 
       let clouds = items.weather[0].description
-      
-      let feelslike = items.main.feels_like
 
       let cloudiness = ""
       
@@ -129,9 +127,9 @@ const renderCurrentWeather = (search) => {
 
       
 
-      // rendering current weather section
+      let feelslike = items.main.feels_like
 
-
+      
 
       $("#all-container").append(` <h2> </h2>
       <section class="current-weather-section">
@@ -244,7 +242,7 @@ const handleFormSubmit = (event) => {
   
 
 const onReady = () => {
-  /
+  // render recent cities
   
 };
 const form1 = document.getElementById("form")
